@@ -1,23 +1,26 @@
 import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { Currency, CurrencyDocument } from './schemas/currency.schema';
 import { CreateCurrencyDto } from './dto/create-currency.dto';
-import { UpdateCurrencyDto } from './dto/update-currency.dto';
 
 @Injectable()
 export class CurrenciesService {
-  create(createCurrencyDto: CreateCurrencyDto) {
-    return 'This action adds a new currency';
+  constructor(
+    @InjectModel(Currency.name) private currencyModel: Model<CurrencyDocument>,
+  ) {}
+
+  async create(createCurrencyDto: CreateCurrencyDto): Promise<Currency> {
+    const newExchange = new this.currencyModel(createCurrencyDto);
+    return newExchange.save();
   }
 
-  findAll() {
-    return `This action returns all currencies`;
+  async findAll(): Promise<Currency[]> {
+    return this.currencyModel.find().exec();
   }
 
   findOne(id: number) {
     return `This action returns a #${id} currency`;
-  }
-
-  update(id: number, updateCurrencyDto: UpdateCurrencyDto) {
-    return `This action updates a #${id} currency`;
   }
 
   remove(id: number) {
