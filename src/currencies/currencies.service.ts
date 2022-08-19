@@ -16,14 +16,32 @@ export class CurrenciesService {
   }
 
   async findAll(): Promise<Currency[]> {
-    return this.currencyModel.find().exec();
+    return this.currencyModel
+      .find()
+      .select('-createdAt -updatedAt -__v')
+      .lean()
+      .exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} currency`;
+  exchange(currencies: string, date: string) {
+    const [baseCurrency, pairCurrency] = currencies.split(',');
+
+    if (!date)
+      return this.currencyModel
+        .findOne({ baseCurrency, pairCurrency })
+        .select('-createdAt -updatedAt -__v')
+        .lean()
+        .sort({ createdAt: -1 })
+        .limit(1);
+
+    return this.currencyModel
+      .findOne({ baseCurrency, pairCurrency, date: new Date(date) })
+      .select('-createdAt -updatedAt -__v')
+      .lean()
+      .limit(1);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} currency`;
+  async remove(id: string) {
+    return await this.currencyModel.findOneAndDelete({ _id: id });
   }
 }

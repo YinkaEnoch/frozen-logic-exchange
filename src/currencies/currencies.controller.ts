@@ -5,11 +5,11 @@ import {
   Body,
   Param,
   Delete,
-  HttpCode,
+  Query,
+  BadRequestException,
 } from '@nestjs/common';
 import { CurrenciesService } from './currencies.service';
 import { CreateCurrencyDto } from './dto/create-currency.dto';
-import { UpdateCurrencyDto } from './dto/update-currency.dto';
 
 @Controller('currencies')
 export class CurrenciesController {
@@ -21,20 +21,53 @@ export class CurrenciesController {
   }
 
   @Get()
-  findAll() {
-    return this.currenciesService.findAll();
+  async findAll() {
+    const docs = this.currenciesService.findAll();
+    if (!docs) return [];
+
+    return docs;
   }
 
-  @Get('exchange')
-  exchange(@Param('id') id: string) {
-    return this.currenciesService.findOne(+id);
+  @Get('/exchange')
+  async exchange(
+    @Query('currencies') currencies: string,
+    @Query('date') date: string,
+  ) {
+    if (!currencies) throw new BadRequestException('currency pair is required');
+
+    const doc = await this.currenciesService.exchange(currencies, date);
+    if (!doc) return [];
+
+    return doc;
   }
 
   @Get('convert')
-  convertPair() {}
+  async convert(
+    @Query('from') from: string,
+    @Query('to') to: string,
+    @Query('amount') amount: number,
+    @Query('date') date: string,
+    @Query('reversed') reversed: boolean,
+  ) {
+    if (!from || !to || !amount)
+      throw new BadRequestException(
+        "'from', 'to' and 'amount' are required fields",
+      );
+
+    const currencies: string = `${from},${to}`;
+    const doc = await this.currenciesService.exchange(currencies, date);
+    if (!doc) return [];
+
+    if (!reversed) return { quote: doc, result: amount / doc.baseValue };
+
+    return { quote: doc, result: amount * doc.baseValue };
+  }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.currenciesService.remove(+id);
+  async remove(@Param('id') id: string) {
+    const doc = await this.currenciesService.remove(id);
+    if (!doc) return [];
+
+    return doc;
   }
 }
