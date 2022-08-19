@@ -1,0 +1,757 @@
+{
+	"info": {
+		"_postman_id": "bd821516-b4a5-4182-bc28-7fe3787b2254",
+		"name": "Frozen Logic - Currency Exchange API",
+		"description": "Test API project for a currency exchange. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Exchange Pair",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"baseCurrency\": \"eur\",\n    \"baseValue\": 0.99,\n    \"pairCurrency\": \"usd\",\n    \"pairValue\": 1,\n    \"date\": \"2022-05-18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/currencies",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"currencies"
+					]
+				},
+				"description": "Create a new curreny exchange pair"
+			},
+			"response": [
+				{
+					"name": "Create Exchange Pair",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"baseCurrency\": \"eur\",\n    \"baseValue\": 500,\n    \"pairCurrency\": \"usd\",\n    \"pairValue\": 100,\n    \"date\": \"2022-05-18\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/currencies",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Embedder-Policy",
+							"value": "require-corp"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "228"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e4-+vNyQwEqC5HwY+g1AVEr3g/dE1s\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Aug 2022 01:24:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"baseCurrency\": \"EUR\",\n    \"baseValue\": 500,\n    \"pairCurrency\": \"USD\",\n    \"pairValue\": 100,\n    \"date\": \"2022-05-18T00:00:00.000Z\",\n    \"_id\": \"62fee639fb6cf054f5cea120\",\n    \"createdAt\": \"2022-08-19T01:24:09.175Z\",\n    \"updatedAt\": \"2022-08-19T01:24:09.175Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Exchange Pair",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/currencies",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"currencies"
+					]
+				},
+				"description": "Returns all exchange pair in the DB.\n\nP.S: Not necessary but comes in handy"
+			},
+			"response": [
+				{
+					"name": "Get All Exchange Pair",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/currencies",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Embedder-Policy",
+							"value": "require-corp"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "455"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c7-Z94slwubPb5WIUXjtzeU/xaWHzg\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Aug 2022 00:34:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"62fed091f43e400dd091728a\",\n        \"baseCurrency\": \"NGN\",\n        \"baseValue\": 650,\n        \"pairCurrency\": \"USD\",\n        \"pairValue\": 1,\n        \"date\": \"2022-08-18T00:00:00.000Z\",\n        \"createdAt\": \"2022-08-18T23:51:45.918Z\",\n        \"updatedAt\": \"2022-08-18T23:51:45.918Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"62fed0baf43e400dd091728c\",\n        \"baseCurrency\": \"CNY\",\n        \"baseValue\": 65,\n        \"pairCurrency\": \"EUR\",\n        \"pairValue\": 10,\n        \"date\": \"2022-08-18T00:00:00.000Z\",\n        \"createdAt\": \"2022-08-18T23:52:26.988Z\",\n        \"updatedAt\": \"2022-08-18T23:52:26.988Z\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Delete An Exchange Pair",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/currencies/62fed59f3d0e29c897d5d502",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"currencies",
+						"62fed59f3d0e29c897d5d502"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get The Exchange Rate For A Curreny Pair",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/currencies/exchange?currencies=eur,usd&date=2022-06-18",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"currencies",
+						"exchange"
+					],
+					"query": [
+						{
+							"key": "currencies",
+							"value": "eur,usd"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-18"
+						}
+					]
+				},
+				"description": "# Get Exchange Rate\n\nGet the exchange rate for two currncy pair using the route `{{baseUrl}}/currencies/exchange?currencies=baseCurrency,pairCurrency&date=YYYY-MM-DD`\n\nThe currencies query params is required while the date param is optional. If the date params is not specified, then the latest record for the currency pair is returned."
+			},
+			"response": [
+				{
+					"name": "Get The Exchange Rate For A Curreny Pair",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/currencies/exchange",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies",
+								"exchange"
+							],
+							"query": [
+								{
+									"key": "currencies",
+									"value": "eur,usd",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2022-06-18",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Embedder-Policy",
+							"value": "require-corp"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "78"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4e-/YamkrWykf+Z8hpQ3L+Q6eoRun4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Aug 2022 09:43:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"currency pair is required\",\n    \"error\": \"Bad Request\"\n}"
+				},
+				{
+					"name": "Get The Exchange Rate For A Curreny Pair",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/currencies/exchange?currencies=eur,usd&date=2022-06-18",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies",
+								"exchange"
+							],
+							"query": [
+								{
+									"key": "currencies",
+									"value": "eur,usd"
+								},
+								{
+									"key": "date",
+									"value": "2022-06-18"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Embedder-Policy",
+							"value": "require-corp"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "226"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e2-WeFUfLiMwdxiryPz/1e99YvGbS0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Aug 2022 09:44:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"62fee446988afb4610be29ee\",\n    \"baseCurrency\": \"EUR\",\n    \"baseValue\": 50,\n    \"pairCurrency\": \"USD\",\n    \"pairValue\": 10,\n    \"date\": \"2022-06-18T00:00:00.000Z\",\n    \"createdAt\": \"2022-08-19T01:15:50.993Z\",\n    \"updatedAt\": \"2022-08-19T01:15:50.993Z\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "Get The Exchange Rate For A Curreny Pair",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/currencies/exchange?currencies=eur,usd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies",
+								"exchange"
+							],
+							"query": [
+								{
+									"key": "currencies",
+									"value": "eur,usd"
+								},
+								{
+									"key": "date",
+									"value": "2022-06-18",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Embedder-Policy",
+							"value": "require-corp"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "228"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e4-uoXqELZeNnli3/hVOjIfG3t9fuc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Aug 2022 09:44:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"62fee639fb6cf054f5cea120\",\n    \"baseCurrency\": \"EUR\",\n    \"baseValue\": 500,\n    \"pairCurrency\": \"USD\",\n    \"pairValue\": 100,\n    \"date\": \"2022-05-18T00:00:00.000Z\",\n    \"createdAt\": \"2022-08-19T01:24:09.175Z\",\n    \"updatedAt\": \"2022-08-19T01:24:09.175Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Convert Currency ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/currencies/convert?from=eur&to=usd&amount=500&date=2022-08-19&reversed=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"currencies",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "eur",
+							"description": "base currency"
+						},
+						{
+							"key": "to",
+							"value": "usd",
+							"description": "pair currency"
+						},
+						{
+							"key": "amount",
+							"value": "500",
+							"description": "amount to be converted"
+						},
+						{
+							"key": "date",
+							"value": "2022-08-19",
+							"description": "specified date for exchange rate"
+						},
+						{
+							"key": "reversed",
+							"value": "true",
+							"description": "reverse the conversion"
+						}
+					]
+				},
+				"description": "# Convert between two currencies\nConvert a currency (base currency) to another currency (pair currency).\n\n## Query params\n- from: the base currency\n- to:      the pair currency\n- amount:  the amount to be converted\n- date:    use an exchange rate from a specified date (optional)\n- reversed: use to reverse a conversion without changing the `from` and `to` query parameters (optional)\n\n## Endpoint\n`{{baseUrl}}/currencies/convert?from=eur&to=usd&amount=500&date=YYYY-MM-DD&reversed=false`"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3030/api/v1"
+		}
+	]
+}

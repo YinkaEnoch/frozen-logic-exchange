@@ -58,9 +58,9 @@ export class CurrenciesController {
     const doc = await this.currenciesService.exchange(currencies, date);
     if (!doc) return [];
 
-    if (!reversed) return { quote: doc, result: amount / doc.baseValue };
+    if (!reversed) return { quote: doc, result: amount * doc.pairValue };
 
-    return { quote: doc, result: amount * doc.baseValue };
+    return { quote: doc, result: amount / doc.pairValue };
   }
 
   @Delete(':id')
